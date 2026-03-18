@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | SAM LIANG</title>
+    <style>
+        :root { --text-color: #1a1a1a; --sub-color: #666; --line-color: #eaeaea; --bg-color: #fff; }
+        body { margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+        
+        /* 导航栏 (全局统一) */
+        nav { position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; padding: 30px 50px; box-sizing: border-box; background: rgba(255,255,255,0.95); z-index: 1000; border-bottom: 1px solid var(--line-color); }
+        .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-decoration: none; color: var(--text-color); }
+        .nav-links { display: flex; align-items: center; }
+        .dropdown { position: relative; display: inline-block; margin-left: 30px; }
+        .dropdown > a { text-decoration: none; color: var(--text-color); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; padding-bottom: 10px; cursor: pointer; }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 180px; box-shadow: 0px 10px 30px rgba(0,0,0,0.08); z-index: 1; padding: 10px 0; border-top: 2px solid var(--text-color); }
+        .dropdown-content a { color: var(--text-color); padding: 12px 20px; text-decoration: none; display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .dropdown-content a:hover { background-color: #f5f5f5; color: var(--sub-color); padding-left: 25px; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .nav-links > a { text-decoration: none; color: var(--text-color); margin-left: 30px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* 简历主容器 */
+        .resume-container { max-width: 1000px; margin: 150px auto 100px auto; padding: 0 40px; }
+
+        /* 头部：照片与简介 */
+        .profile-section { display: flex; gap: 60px; align-items: center; margin-bottom: 80px; }
+        .profile-pic { width: 220px; height: 220px; object-fit: cover; border-radius: 50%; box-shadow: 0 15px 35px rgba(0,0,0,0.1); flex-shrink: 0; }
+        .profile-info h1 { font-size: 2.5rem; font-weight: 300; letter-spacing: 3px; margin: 0 0 10px 0; }
+        .profile-info h2 { font-size: 1.1rem; color: var(--sub-color); font-weight: 400; margin: 0 0 20px 0; letter-spacing: 1px; }
+        .profile-info p { font-size: 1rem; color: #444; margin-bottom: 30px; }
+        
+        /* 按钮设计 */
+        .contact-btn { display: inline-block; padding: 12px 30px; background: var(--text-color); color: #fff; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; border: 1px solid var(--text-color); }
+        .contact-btn:hover { background: #fff; color: var(--text-color); }
+
+        /* 分割线 */
+        hr { border: 0; height: 1px; background: var(--line-color); margin: 60px 0; }
+
+        /* 简历内容排版 */
+        .section-title { font-size: 1.4rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 40px; color: var(--text-color); display: flex; align-items: center; }
+        .section-title::after { content: ''; flex: 1; height: 1px; background: var(--line-color); margin-left: 20px; }
+
+        .experience-group { margin-bottom: 50px; }
+        .group-title { font-size: 1.2rem; font-weight: 600; color: var(--text-color); margin-bottom: 25px; border-left: 3px solid var(--text-color); padding-left: 15px; }
+
+        .job-item { margin-bottom: 25px; padding-left: 18px; }
+        .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+        .job-name { font-weight: 600; font-size: 1.05rem; }
+        .job-role { font-style: italic; color: var(--sub-color); font-size: 0.9rem; margin-left: 8px; }
+        .job-date { font-size: 0.85rem; color: var(--sub-color); letter-spacing: 0.5px; }
+        .job-desc { margin: 0; font-size: 0.95rem; color: #555; }
+
+        /* 技能与教育 */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .list-unstyled { list-style: none; padding: 0; margin: 0; }
+        .list-unstyled li { margin-bottom: 12px; font-size: 0.95rem; color: #444; }
+        .list-unstyled strong { color: var(--text-color); }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .profile-section { flex-direction: column; text-align: center; gap: 30px; }
+            .job-header { flex-direction: column; }
+            .job-date { margin-top: 5px; }
+            .grid-2 { grid-template-columns: 1fr; }
+            nav { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">SAM LIANG</a>
+        <div class="nav-links">
+            <div class="dropdown">
+                <a href="index.html">Portfolio</a>
+                <div class="dropdown-content">
+                    <a href="comics.html">Comics</a>
+                    <a href="film.html">Film Conceptart</a>
+                    <a href="personal.html">Personal Works</a>
+                    <a href="others.html">Others works</a>
+                </div>
+            </div>
+            <a href="about.html" style="font-weight: bold; color: #1a1a1a;">About & Resume</a>
+        </div>
+    </nav>
+
+    <main class="resume-container">
+        <section class="profile-section">
+            <img src="https://res.cloudinary.com/duzk5t3qp/image/upload/v1773825050/WechatIMG2260_dvwkhf.jpg" alt="Sam Liang" class="profile-pic">
+            <div class="profile-info">
+                <h1>SAM LIANG</h1>
+                <h2>Concept Artist & Visual Storyteller | Los Angeles, CA</h2>
+                <p>I’m a digital painting artist with a passion for bringing imaginative worlds to life in films, games, and comics. With a proven track record in creating visually stunning artwork, I specialize in concept art, character design, and storytelling visuals that captivate audiences. Currently based in Los Angeles with full U.S. work authorization (EB-1A Extraordinary Talent Visa), I'm eager to collaborate with creative teams to craft unforgettable visual experiences.</p>
+                <a href="mailto:liangxiang897@gmail.com" class="contact-btn">Contact Me</a>
+            </div>
+        </section>
+
+        <section>
+            <h3 class="section-title">Work Experience</h3>
+
+            <div class="experience-group">
+                <h4 class="group-title">Comic Book Creator & Illustrator</h4>
+                
+                <div class="job-item">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-name">"Snow on the Brow"</span>
+                            <span class="job-role">(Original Comic Book, 700 Pages)</span>
+                        </div>
+                        <span class="job-date">2015 – Present</span>
+                    </div>
+                    <p class="job-desc">Authored and illustrated a 700-page epic comic series, showcasing storytelling, character design, and visual narrative skills.</p>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-name">"Tales from Tang Poetry"</span>
+                            <span class="job-role">(Original Comic Strip)</span>
+                        </div>
+                        <span class="job-date">2022 – 2023</span>
+                    </div>
+                    <p class="job-desc">Created and published a comic strip blending classical Chinese poetry with modern visuals, published across platforms.</p>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-header">
+                        <div>
+                            <span class="job-name">"The Chill of Strangers"</span>
+                            <span class="job-role">(Original Comic Book)</span>
+                        </div>
+                        <span class="job-date">2013 – 2014</span>
+                    </div>
+                    <p class="job-desc">Created, illustrated, and published a 198-page original comic, single-handedly managing all aspects from initial sketches to final artwork, including character design, scenes, and storyboarding.</p>
+                </div>
+            </div>
+
+            <div class="experience-group">
+                <h4 class="group-title">Film Concept Art Designer</h4>
+                
+                <div class="job-item">
+                    <div class="job-header">
+                        <div><span class="job-name">"Let Love Reignite"</span> <span class="job-role">(UCN Movie)</span></div>
+                        <span class="job-date">2018</span>
+                    </div>
+                    <p class="job-desc">Designed concept art to visualize key scenes, collaborating with the director to shape the film's aesthetic.</p>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-header">
+                        <div><span class="job-name">"Love Apartment"</span> <span class="job-role">(Feature Film)</span></div>
+                        <span class="job-date">2017</span>
+                    </div>
+                    <p class="job-desc">Crafted concept artwork to enhance production design for a popular comedic film adaptation.</p>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-header">
+                        <div><span class="job-name">"Lotus Prince Nezha"</span> <span class="job-role">(Feature Film)</span></div>
+                        <span class="job-date">2016</span>
+                    </div>
+                    <p class="job-desc">Developed character and environmental concept art for a mythology-inspired cinematic project.</p>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-header">
+                        <div><span class="job-name">"Notes from the Tomb"</span> <span class="job-role">(Directed by Li Rengang)</span></div>
+                        <span class="job-date">2015</span>
+                    </div>
+                    <p class="job-desc">Contributed concept designs for a high-budget adventure film, supporting pre-production visuals.</p>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-header">
+                        <div><span class="job-name">"The Nine Layers of the Demon Tower"</span> <span class="job-role">(Directed by Lu Chuan)</span></div>
+                        <span class="job-date">2014</span>
+                    </div>
+                    <p class="job-desc">Created atmospheric concept art for a visually ambitious fantasy film, aiding production planning.</p>
+                </div>
+            </div>
+
+            <div class="experience-group">
+                <h4 class="group-title">Storyboard Artist, Illustrator & Game Concept Designer</h4>
+                
+                <div class="job-item">
+                    <div class="job-header">
+                        <div><span class="job-name">"Fuliang Xiaoliang"</span> <span class="job-role">IP Image Series</span></div>
+                        <span class="job-date">2022</span>
+                    </div>
+                    <p class="job-desc">Illustrated a series of characters and scenes for a city branding initiative, enhancing cultural storytelling.</p>
+                </div>
+                
+                <div class="job-item">
+                    <div class="job-header">
+                        <div><span class="job-name">Virtual Concert Project: Art Painting Heaven</span></div>
+                        <span class="job-date">2022</span>
+                    </div>
+                    <p class="job-desc">Collaborated on visual designs for a virtual concert, integrating digital art and animation concepts.</p>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-header">
+                        <div><span class="job-name">18 Digital Collection Series</span></div>
+                        <span class="job-date">2022</span>
+                    </div>
+                    <p class="job-desc">Designed original artwork for a digital collectible series, appealing to modern NFT trends.</p>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-header">
+                        <div><span class="job-name">"World of Tanks 2"</span> <span class="job-role">Game Promo</span></div>
+                        <span class="job-date">2016</span>
+                    </div>
+                    <p class="job-desc">Drew atmospheric illustrations for promotional materials, enhancing game marketing visuals.</p>
+                </div>
+            </div>
+
+            <div class="experience-group">
+                <h4 class="group-title">Digital Painting & Illustration Instructor</h4>
+                <div class="job-item">
+                    <div class="job-header">
+                        <div><span class="job-name">Yishi CG Digital Painting Academy</span></div>
+                        <span class="job-date">2014 – 2024</span>
+                    </div>
+                    <p class="job-desc">Taught digital painting and illustration techniques to over 1000+ students, developing curricula focused on storytelling, concept art, and industry-standard tools (e.g., Photoshop, Procreate).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid-2">
+            <div>
+                <h3 class="section-title">Skills</h3>
+                <ul class="list-unstyled">
+                    <li><strong>Digital Painting:</strong> Expert in creating detailed artwork using industry-standard tools.</li>
+                    <li><strong>Storyboarding:</strong> Skilled in translating scripts into visual sequences for film and commercials.</li>
+                    <li><strong>Concept Art:</strong> Experienced in designing characters, environments, and atmospheres.</li>
+                    <li><strong>Graphic Design:</strong> Proficient in crafting visually compelling designs for branding.</li>
+                    <li><strong>AI Tools:</strong> Knowledgeable in AI-assisted art creation (Midjourney) to enhance workflows.</li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="section-title">Education</h3>
+                <ul class="list-unstyled">
+                    <li>
+                        <strong>Beijing Gino Studio</strong> | 2012 – 2013<br>
+                        <span style="color:var(--sub-color); font-size:0.9em;">Certificate in Film Language, Digital Painting & Storyboarding</span>
+                    </li>
+                    <li style="margin-top: 15px;">
+                        <strong>Nanjing Xiaozhuang College</strong> | 2008 – 2012<br>
+                        <span style="color:var(--sub-color); font-size:0.9em;">Bachelor of Arts in Art and Design</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer style="text-align: center; padding: 50px; color: #bbb; font-size: 0.7rem; letter-spacing: 2px; border-top: 1px solid var(--line-color);">
+        © 2026 SAM LIANG. ALL RIGHTS RESERVED.
+    </footer>
+
+</body>
+</html>

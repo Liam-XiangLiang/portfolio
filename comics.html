@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comics | SAM LIANG</title>
+    <style>
+        :root { --text-color: #1a1a1a; --sub-color: #888; --bg-color: #fff; --divider-color: #eee; }
+        body { margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-color); color: var(--text-color); }
+        
+        /* 导航栏 */
+        nav { position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; padding: 30px 50px; box-sizing: border-box; background: rgba(255,255,255,0.95); z-index: 1000; border-bottom: 1px solid var(--divider-color); }
+        .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-decoration: none; color: var(--text-color); }
+        .nav-links { display: flex; align-items: center; }
+        .dropdown { position: relative; display: inline-block; margin-left: 30px; }
+        .dropdown > a { text-decoration: none; color: var(--text-color); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; padding-bottom: 10px; cursor: pointer; font-weight: bold; }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 180px; box-shadow: 0px 10px 30px rgba(0,0,0,0.08); z-index: 1; padding: 10px 0; border-top: 2px solid var(--text-color); }
+        .dropdown-content a { color: var(--text-color); padding: 12px 20px; text-decoration: none; display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; font-weight: normal; }
+        .dropdown-content a:hover { background-color: #f5f5f5; color: var(--sub-color); padding-left: 25px; }
+        .dropdown:hover .dropdown-content { display: block; }
+        .nav-links > a { text-decoration: none; color: var(--text-color); margin-left: 30px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* 优化：暗色系背景图横幅 */
+        .page-header { 
+            position: relative;
+            padding: 180px 50px 80px 50px; 
+            text-align: center; 
+            background-color: #111; /* 底色改为深色 */
+            background-image: url('https://res.cloudinary.com/duzk5t3qp/image/upload/v1773816353/CleanShot_2025-02-20_at_21.26.56_2x_dgkxkv.png');
+            background-size: cover;
+            background-position: center 30%;
+            overflow: hidden;
+            margin-bottom: 80px;
+        }
+        /* 改为黑色半透明遮罩 */
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6); /* 0.6代表60%的不透明度 */
+            z-index: 1;
+        }
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        /* 标题文字反白 */
+        .page-title { 
+            font-size: 2.5rem; 
+            font-weight: 300; 
+            letter-spacing: 4px; 
+            margin-bottom: 20px; 
+            text-transform: uppercase; 
+            color: #ffffff; /* 纯白标题 */
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* 增加一点阴影让文字更突出 */
+        }
+        .page-desc { 
+            color: #eeeeee; /* 浅灰副标题 */
+            font-size: 0.95rem; 
+            line-height: 1.6; 
+            text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+        }
+
+        /* 作品区块设置 */
+        .project-section { margin-bottom: 120px; }
+        .project-info { padding: 0 50px; max-width: 1400px; margin: 0 auto 40px auto; display: flex; flex-direction: column; align-items: flex-start; border-left: 3px solid var(--text-color); }
+        .project-title { font-size: 1.5rem; font-weight: 600; margin: 0 0 10px 20px; letter-spacing: 1px; text-transform: uppercase; }
+        .project-meta { font-size: 0.85rem; color: var(--sub-color); margin: 0 0 0 20px; max-width: 600px; line-height: 1.5; }
+
+        /* 核心：纯 CSS 瀑布流 */
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 20px;
+            padding: 0 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            overflow: hidden;
+            background: #f9f9f9;
+        }
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s ease;
+            cursor: pointer;
+        }
+        .masonry-item img:hover {
+            transform: scale(1.03);
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 1024px) { .masonry-grid { column-count: 2; } }
+        @media (max-width: 600px) { 
+            .masonry-grid { column-count: 1; padding: 0 20px; }
+            .project-info { padding: 0 20px; }
+            .page-header { padding: 140px 20px 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">SAM LIANG</a>
+        <div class="nav-links">
+            <div class="dropdown">
+                <a href="index.html" style="font-weight: bold;">Portfolio</a>
+                <div class="dropdown-content">
+                    <a href="comics.html" style="font-weight: bold; color: #1a1a1a;">Comics</a>
+                    <a href="film.html">Film Conceptart</a>
+                    <a href="personal.html">Personal Works</a>
+                    <a href="others.html">Others works</a>
+                </div>
+            </div>
+            <a href="about.html">About & Resume</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="header-content">
+            <h1 class="page-title">Graphic Novels</h1>
+            <p class="page-desc">Exploring narrative and world-building through sequential art. Featuring a blend of traditional Chinese aesthetics and modern digital painting techniques.</p>
+        </div>
+    </header>
+
+    <section class="project-section">
+        <div class="project-info">
+            <h2 class="project-title">The Chill of Strangers (陌路寒)</h2>
+            <p class="project-meta"><strong>Historical Milestone:</strong> Recognized as the first fully digitally painted graphic novel in Chinese history. A pioneer project in the digital art transition.</p>
+        </div>
+        <div class="masonry-grid">
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816254/CleanShot_2025-02-20_at_14.48.03_2x_c8vkck.png" alt="Mo Lu Han Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816355/CleanShot_2025-02-20_at_21.28.36_2x_vhmuia.png" alt="Mo Lu Han Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816363/CleanShot_2025-02-20_at_21.28.52_2x_wywsuh.png" alt="Mo Lu Han Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816363/CleanShot_2025-02-20_at_21.29.05_2x_ayofjg.png" alt="Mo Lu Han Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816365/CleanShot_2025-02-20_at_21.29.17_2x_tnsh6c.png" alt="Mo Lu Han Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816361/CleanShot_2025-02-20_at_21.29.28_2x_aejbwc.png" alt="Mo Lu Han Art" loading="lazy"></div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="project-info">
+            <h2 class="project-title">Snow on the Brow (眉间雪)</h2>
+            <p class="project-meta">Original Graphic Novel. Focusing on character-driven storytelling and dynamic martial arts choreography.</p>
+        </div>
+        <div class="masonry-grid">
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816357/CleanShot_2025-02-20_at_21.29.48_2x_gulxfh.png" alt="Mei Jian Xue Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816402/CleanShot_2025-02-20_at_21.33.23_2x_psqaib.png" alt="Mei Jian Xue Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816397/CleanShot_2025-02-20_at_21.31.02_2x_bkpnoh.png" alt="Mei Jian Xue Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816388/CleanShot_2025-02-20_at_21.30.23_2x_fhnuzw.png" alt="Mei Jian Xue Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816391/CleanShot_2025-02-20_at_21.30.43_2x_vhwk6y.png" alt="Mei Jian Xue Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816410/CleanShot_2025-02-20_at_21.33.13_2x_lugk3u.png" alt="Mei Jian Xue Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816407/CleanShot_2025-02-20_at_21.32.04_2x_mtzcx6.png" alt="Mei Jian Xue Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816360/CleanShot_2025-02-20_at_21.30.15_2x_vxykp4.png" alt="Mei Jian Xue Art" loading="lazy"></div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="project-info">
+            <h2 class="project-title">Tales from Tang Poetry (唐诗里的故事)</h2>
+            <p class="project-meta">Visualizing the classical masterpieces of Chinese literature through evocative environments and conceptual character designs.</p>
+        </div>
+        <div class="masonry-grid">
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816262/CleanShot_2025-02-20_at_14.54.06_2x_t3bse5.png" alt="Tang Poetry Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816400/CleanShot_2025-02-20_at_21.33.41_2x_qpwp7i.png" alt="Tang Poetry Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822536/CleanShot_2025-02-20_at_21.34.07_2x_1_y6bsb5.jpg" alt="Tang Poetry Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822543/CleanShot_2025-02-20_at_21.34.23_2x_1_dkwile.jpg" alt="Tang Poetry Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822542/CleanShot_2025-02-20_at_21.34.07_2x_lqjyai.jpg" alt="Tang Poetry Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822550/CleanShot_2025-02-20_at_21.34.23_2x_2_frbk79.jpg" alt="Tang Poetry Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822551/CleanShot_2025-02-20_at_21.34.23_2x_lhfmb2.jpg" alt="Tang Poetry Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822551/CleanShot_2025-02-20_at_21.34.35_2x_1_fmwaow.png" alt="Tang Poetry Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822553/CleanShot_2025-02-20_at_21.34.35_2x_2_yc4kut.png" alt="Tang Poetry Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822540/CleanShot_2025-02-20_at_21.34.07_2x_2_xjvff5.jpg" alt="Tang Poetry Art" loading="lazy"></div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 50px; color: #bbb; font-size: 0.7rem; letter-spacing: 2px; border-top: 1px solid #eee;">
+        © 2026 SAM LIANG. ALL RIGHTS RESERVED.
+    </footer>
+
+</body>
+</html>

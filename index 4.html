@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIAM LIANG | Portfolio</title>
+    <style>
+        :root { --text-color: #1a1a1a; --sub-color: #888; --bg-color: #fff; }
+        body { margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-color); color: var(--text-color); }
+        
+        /* 导航栏：左上名字，右上按钮 */
+        nav { position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; padding: 30px 50px; box-sizing: border-box; background: rgba(255,255,255,0.95); z-index: 1000; }
+        .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-decoration: none; color: var(--text-color); }
+        
+        .nav-links { display: flex; align-items: center; }
+
+        /* 下拉菜单容器 */
+        .dropdown { position: relative; display: inline-block; margin-left: 30px; }
+        .dropdown > a { text-decoration: none; color: var(--text-color); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; padding-bottom: 10px; }
+
+        /* 下拉菜单内容 */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.05);
+            z-index: 1;
+            padding-top: 10px;
+        }
+
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 0 !important; /* 覆盖父级 margin */
+            transition: 0.2s;
+        }
+
+        .dropdown-content a:hover { background-color: #f9f9f9; color: var(--sub-color); }
+        
+        /* 鼠标滑过 Portfolio 显示下拉菜单 */
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown:hover > a { color: var(--sub-color); }
+
+        .nav-links > a { text-decoration: none; color: var(--text-color); margin-left: 30px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links a:hover { color: var(--sub-color); }
+
+        /* 首页居中大图 */
+        .hero { height: 85vh; display: flex; align-items: center; justify-content: center; padding-top: 80px; }
+        .hero img { width: 90%; height: 80%; object-fit: cover; max-width: 1200px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+
+        /* 分类按钮区域 */
+        .categories { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 50px; max-width: 1200px; margin: 0 auto; }
+        .cat-item { position: relative; text-decoration: none; overflow: hidden; height: 250px; background: #eee; }
+        .cat-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .cat-item:hover img { transform: scale(1.05); }
+        .cat-title { position: absolute; bottom: 20px; left: 20px; color: #fff; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0,0,0,0.3); letter-spacing: 1px; }
+
+        @media (max-width: 768px) {
+            .categories { grid-template-columns: 1fr 1fr; padding: 20px; }
+            nav { padding: 20px; }
+            .hero { height: 50vh; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">LIAM LIANG</a>
+        <div class="nav-links">
+            <div class="dropdown">
+                <a href="index.html" style="font-weight: bold;">Portfolio</a>
+                <div class="dropdown-content">
+                    <a href="comics.html">Comics</a>
+                    <a href="film.html">Films</a>
+                    <a href="personal.html">Personal</a>
+                    <a href="others.html">Others</a>
+                </div>
+            </div>
+            <a href="about.html">About & Resume</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <img src="https://res.cloudinary.com/duzk5t3qp/image/upload/v1773817266/samliang000_dngqzl.png" alt="Featured Work">
+    </section>
+
+    <section class="categories">
+        <a href="comics.html" class="cat-item">
+            <img src="https://res.cloudinary.com/duzk5t3qp/image/upload/v1773816254/CleanShot_2025-02-20_at_14.48.03_2x_c8vkck.png" alt="Comics">
+            <div class="cat-title">Comics</div>
+        </a>
+        <a href="film.html" class="cat-item">
+            <img src="https://res.cloudinary.com/duzk5t3qp/image/upload/v1773816263/CleanShot_2025-02-20_at_14.58.26_2x_jt2u9w.png" alt="Film Conceptart">
+            <div class="cat-title">Film Conceptart</div>
+        </a>
+        <a href="personal.html" class="cat-item">
+            <img src="https://res.cloudinary.com/duzk5t3qp/image/upload/v1773816409/CleanShot_2025-02-20_at_22.50.23_2x_qutt6k.png" alt="Personal Works">
+            <div class="cat-title">Personal Works</div>
+        </a>
+        <a href="others.html" class="cat-item">
+            <img src="https://res.cloudinary.com/duzk5t3qp/image/upload/v1773816351/CleanShot_2025-02-20_at_19.33.25_2x_elrj0h.png" alt="Others works">
+            <div class="cat-title">Others works</div>
+        </a>
+    </section>
+
+    <footer style="text-align: center; padding: 100px 50px; color: #ccc; font-size: 0.7rem; letter-spacing: 1px;">
+        © 2026 LIAM LIANG. ALL RIGHTS RESERVED.
+    </footer>
+
+</body>
+</html>

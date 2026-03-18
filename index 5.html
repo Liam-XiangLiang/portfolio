@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAM LIANG | Portfolio</title>
+    <title>LIAM LIANG | Portfolio</title>
     <style>
         :root { --text-color: #1a1a1a; --sub-color: #888; --bg-color: #fff; --section-bg: #f7f7f7; }
         body { margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-color); color: var(--text-color); }
@@ -23,25 +23,26 @@
 
         .nav-links > a { text-decoration: none; color: var(--text-color); margin-left: 30px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* 首页大图区 - 针对竖版图自适应优化 */
-        .hero { height: 90vh; display: flex; align-items: center; justify-content: center; padding-top: 90px; padding-bottom: 40px; box-sizing: border-box; background: #fff; }
-        /* 使用 contain 保证图片完整显示不被裁切，最大高度适应屏幕 */
-        .hero img { max-height: 100%; max-width: 90%; width: auto; height: auto; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
+        /* 首页大图区 */
+        .hero { height: 90vh; display: flex; align-items: center; justify-content: center; background: #fff; }
+        .hero img { width: 90%; height: 75%; object-fit: cover; max-width: 1200px; }
 
-        /* 分类板块 */
-        .category-section { background: var(--section-bg); padding: 80px 0 100px 0; }
+        /* 分类板块 - 视觉区分 */
+        .category-section { background: var(--section-bg); padding: 100px 0; }
+        .section-title { text-align: center; font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; color: var(--sub-color); margin-bottom: 50px; }
         .categories { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 0 50px; max-width: 1400px; margin: 0 auto; }
         
         .cat-item { position: relative; text-decoration: none; overflow: hidden; height: 350px; background: #ddd; }
         .cat-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1); filter: brightness(0.9); }
         .cat-item:hover img { transform: scale(1.1); filter: brightness(1); }
         
+        /* 这里的文字效果做了加强 */
         .cat-info { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 40%); opacity: 0.9; transition: 0.4s; }
         .cat-item:hover .cat-info { opacity: 1; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%); }
         .cat-title { color: #fff; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
 
         @media (max-width: 1024px) { .categories { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 600px) { .categories { grid-template-columns: 1fr; } nav { padding: 20px; } .hero { height: 70vh; } }
+        @media (max-width: 600px) { .categories { grid-template-columns: 1fr; } nav { padding: 20px; } }
     </style>
 </head>
 <body>
@@ -67,6 +68,7 @@
     </section>
 
     <div class="category-section">
+        <div class="section-title">Explore Works</div>
         <section class="categories">
             <a href="comics.html" class="cat-item">
                 <img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816254/CleanShot_2025-02-20_at_14.48.03_2x_c8vkck.png" alt="Comics">
@@ -87,8 +89,8 @@
         </section>
     </div>
 
-    <footer style="text-align: center; padding: 80px 50px; color: #bbb; font-size: 0.7rem; letter-spacing: 2px; background: #fff;">
-        © 2026 SAM LIANG. ALL RIGHTS RESERVED.
+    <footer style="text-align: center; padding: 120px 50px; color: #bbb; font-size: 0.7rem; letter-spacing: 2px; background: #fff;">
+        © 2026 LIAM LIANG. ALL RIGHTS RESERVED.
     </footer>
 
 </body>
