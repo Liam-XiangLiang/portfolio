@@ -8,84 +8,47 @@
         :root { --text-color: #1a1a1a; --sub-color: #888; --bg-color: #fff; --divider-color: #eee; }
         body { margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-color); color: var(--text-color); }
         
-        /* 导航栏 */
         nav { position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; padding: 30px 50px; box-sizing: border-box; background: rgba(255,255,255,0.95); z-index: 1000; border-bottom: 1px solid var(--divider-color); }
         .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-decoration: none; color: var(--text-color); }
         .nav-links { display: flex; align-items: center; }
         .dropdown { position: relative; display: inline-block; margin-left: 30px; }
         .dropdown > a { text-decoration: none; color: var(--text-color); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; padding-bottom: 10px; cursor: pointer; font-weight: bold; }
-        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 180px; box-shadow: 0px 10px 30px rgba(0,0,0,0.08); z-index: 1; padding: 10px 0; border-top: 2px solid var(--text-color); }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 220px; box-shadow: 0px 10px 30px rgba(0,0,0,0.08); z-index: 1; padding: 10px 0; border-top: 2px solid var(--text-color); }
         .dropdown-content a { color: var(--text-color); padding: 12px 20px; text-decoration: none; display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; font-weight: normal; }
         .dropdown-content a:hover { background-color: #f5f5f5; color: var(--sub-color); padding-left: 25px; }
         .dropdown:hover .dropdown-content { display: block; }
         .nav-links > a { text-decoration: none; color: var(--text-color); margin-left: 30px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* 暗色系背景图横幅 (电影感) */
         .page-header { 
-            position: relative;
-            padding: 180px 50px 80px 50px; 
-            text-align: center; 
+            position: relative; padding: 180px 50px 80px 50px; text-align: center; 
             background-color: #111; 
-            /* 建议在这里放一张你画的电影大场景气氛图（Keyframe） */
             background-image: url('https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816263/CleanShot_2025-02-20_at_14.58.26_2x_jt2u9w.png');
-            background-size: cover;
-            background-position: center 30%;
-            overflow: hidden;
-            margin-bottom: 80px;
+            background-size: cover; background-position: center 30%; overflow: hidden; margin-bottom: 80px;
         }
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.65); /* 黑色半透明遮罩 */
-            z-index: 1;
-        }
-        .header-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        .page-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.65); z-index: 1; }
+        .header-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
         .page-title { font-size: 2.5rem; font-weight: 300; letter-spacing: 4px; margin-bottom: 20px; text-transform: uppercase; color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .page-desc { color: #eeeeee; font-size: 0.95rem; line-height: 1.6; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
 
-        /* 作品区块设置 */
         .project-section { margin-bottom: 120px; }
         .project-info { padding: 0 50px; max-width: 1400px; margin: 0 auto 40px auto; display: flex; flex-direction: column; align-items: flex-start; border-left: 3px solid var(--text-color); }
         .project-title { font-size: 1.5rem; font-weight: 600; margin: 0 0 10px 20px; letter-spacing: 1px; text-transform: uppercase; }
-        .project-meta { font-size: 0.85rem; color: var(--sub-color); margin: 0 0 0 20px; max-width: 600px; line-height: 1.5; }
+        .project-meta { font-size: 0.85rem; color: var(--sub-color); margin: 0 0 0 20px; max-width: 800px; line-height: 1.5; }
 
-        /* 核心：纯 CSS 瀑布流 */
-        .masonry-grid {
-            column-count: 3;
-            column-gap: 20px;
-            padding: 0 50px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 20px;
-            overflow: hidden;
-            background: #f9f9f9;
-        }
-        .masonry-item img {
-            width: 100%;
-            display: block;
-            transition: transform 0.4s ease;
-            cursor: pointer;
-        }
-        .masonry-item img:hover {
-            transform: scale(1.03);
-        }
+        .masonry-grid { column-count: 3; column-gap: 20px; padding: 0 50px; max-width: 1400px; margin: 0 auto; }
+        .masonry-item { break-inside: avoid; margin-bottom: 20px; overflow: hidden; background: #f9f9f9; }
+        .masonry-item img { width: 100%; display: block; transition: transform 0.4s ease; cursor: pointer; }
+        .masonry-item img:hover { transform: scale(1.03); }
 
-        /* 响应式调整 */
         @media (max-width: 1024px) { .masonry-grid { column-count: 2; } }
-        @media (max-width: 600px) { 
-            .masonry-grid { column-count: 1; padding: 0 20px; }
-            .project-info { padding: 0 20px; }
-            .page-header { padding: 140px 20px 60px 20px; }
-        }
+        @media (max-width: 600px) { .masonry-grid { column-count: 1; padding: 0 20px; } .project-info { padding: 0 20px; } .page-header { padding: 140px 20px 60px 20px; } }
+
+        .lightbox { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); opacity: 0; transition: opacity 0.3s ease; justify-content: center; align-items: center; }
+        .lightbox.show { opacity: 1; }
+        .lightbox-content { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.8); transform: scale(0.95); transition: transform 0.3s ease; }
+        .lightbox.show .lightbox-content { transform: scale(1); }
+        .close-btn { position: absolute; top: 20px; right: 40px; color: #fff; font-size: 40px; font-weight: 300; cursor: pointer; transition: 0.3s; font-family: 'Inter', sans-serif; z-index: 2001; }
+        .close-btn:hover { color: #888; }
     </style>
 </head>
 <body>
@@ -96,56 +59,144 @@
             <div class="dropdown">
                 <a href="index.html" style="font-weight: bold;">Portfolio</a>
                 <div class="dropdown-content">
-                    <a href="comics.html">Comics</a>
+                    <a href="comics.html">Comics & Storyboards</a>
                     <a href="film.html" style="font-weight: bold; color: #1a1a1a;">Film Conceptart</a>
                     <a href="personal.html">Personal Works</a>
-                    <a href="others.html">Others works</a>
                 </div>
             </div>
-            <a href="about.html">About & Resume</a>
+            <a href="about.html">About</a>
         </div>
     </nav>
 
     <header class="page-header">
         <div class="header-content">
-            <h1 class="page-title">Film Concept Art</h1>
-            <p class="page-desc">Designing atmospheric environments, keyframes, and character concepts for feature films. Translating directorial vision into compelling visual narratives.</p>
+            <h1 class="page-title">Concept Art & Design</h1>
+            <p class="page-desc">Designing atmospheric environments, keyframes, and character concepts for feature films and commercial IPs. Translating directorial vision into compelling visual narratives.</p>
         </div>
     </header>
 
     <section class="project-section">
         <div class="project-info">
-            <h2 class="project-title">The Nine Layers of the Demon Tower</h2>
-            <p class="project-meta"><strong>Director: Lu Chuan (2014)</strong> | Created atmospheric concept art for a visually ambitious fantasy film, focusing on environmental design and pre-production visuals.</p>
+            <h2 class="project-title">The Nine Layers of the Demon Tower (九层妖塔)</h2>
+            <p class="project-meta"><strong>Director: Lu Chuan (2014)</strong> | Created atmospheric concept art for a visually ambitious fantasy film, focusing on epic environmental design and pre-production visuals.</p>
         </div>
         <div class="masonry-grid">
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822536/CleanShot_2025-02-20_at_21.34.07_2x_1_y6bsb5.jpg" alt="Film Concept Art" loading="lazy"></div>
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822543/CleanShot_2025-02-20_at_21.34.23_2x_1_dkwile.jpg" alt="Film Concept Art" loading="lazy"></div>
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822542/CleanShot_2025-02-20_at_21.34.07_2x_lqjyai.jpg" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773837347/CleanShot_2026-03-18_at_20.34.42_k1pp8x.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816265/CleanShot_2025-02-20_at_16.45.21_2x_fjiux2.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816266/CleanShot_2025-02-20_at_16.42.45_2x_eyn8o7.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816255/CleanShot_2025-02-20_at_17.27.35_2x_ms4t38.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816267/CleanShot_2025-02-20_at_16.47.00_2x_qoy1b5.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816266/CleanShot_2025-02-20_at_17.40.36_2x_slmbwj.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816267/CleanShot_2025-02-20_at_17.48.36_2x_xyzvjd.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816267/CleanShot_2025-02-20_at_17.28.52_2x_nimtzl.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816268/CleanShot_2025-02-20_at_16.58.16_2x_kgxln1.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816269/CleanShot_2025-02-20_at_17.13.09_2x_ih1nta.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816269/CleanShot_2025-02-20_at_17.37.55_2x_lxp4eo.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816270/CleanShot_2025-02-20_at_17.51.30_2x_lprywe.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816272/CleanShot_2025-02-20_at_17.23.57_2x_xyxepj.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816273/CleanShot_2025-02-20_at_17.16.16_2x_rh2h6o.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816279/CleanShot_2025-02-20_at_17.24.57_2x_pwpxv4.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816283/CleanShot_2025-02-20_at_17.18.38_2x_dzwnxe.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816255/CleanShot_2025-02-20_at_17.26.06_2x_g7w82u.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816269/CleanShot_2025-02-20_at_17.52.26_2x_vjga9u.png" alt="Film Concept Art" loading="lazy"></div>
         </div>
     </section>
 
     <section class="project-section">
         <div class="project-info">
-            <h2 class="project-title">Notes from the Tomb</h2>
-            <p class="project-meta"><strong>Director: Li Rengang (2015)</strong> | High-budget adventure film. Contributed detailed set concepts, prop designs, and mood explorations.</p>
+            <h2 class="project-title">Notes from the Tomb (盗墓笔记)</h2>
+            <p class="project-meta"><strong>Director: Li Rengang (2015)</strong> | High-budget adventure film. Contributed detailed set concepts, mechanical prop designs, and dark atmospheric mood explorations.</p>
         </div>
         <div class="masonry-grid">
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822550/CleanShot_2025-02-20_at_21.34.23_2x_2_frbk79.jpg" alt="Film Concept Art" loading="lazy"></div>
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822551/CleanShot_2025-02-20_at_21.34.23_2x_lhfmb2.jpg" alt="Film Concept Art" loading="lazy"></div>
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822551/CleanShot_2025-02-20_at_21.34.35_2x_1_fmwaow.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773837340/CleanShot_2026-03-18_at_20.34.58_airvdm.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816270/CleanShot_2025-02-20_at_17.53.51_2x_jbam5l.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816274/CleanShot_2025-02-20_at_17.54.19_2x_xo28ug.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816274/CleanShot_2025-02-20_at_18.00.25_2x_soppdj.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816276/CleanShot_2025-02-20_at_18.00.43_2x_od0tvm.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816276/CleanShot_2025-02-20_at_18.02.59_2x_jypxa7.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816278/CleanShot_2025-02-20_at_18.03.24_2x_vb7bxx.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816278/CleanShot_2025-02-20_at_18.14.46_2x_nyfydx.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816279/CleanShot_2025-02-20_at_18.13.46_2x_ensjkk.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816280/CleanShot_2025-02-20_at_18.15.17_2x_nkdwop.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816281/CleanShot_2025-02-20_at_18.15.28_2x_dp4nxr.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816281/CleanShot_2025-02-20_at_18.16.54_2x_wloskx.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816282/CleanShot_2025-02-20_at_18.17.25_2x_y2uifx.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816282/CleanShot_2025-02-20_at_18.56.42_2x_b9hgax.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816283/CleanShot_2025-02-20_at_18.54.58_2x_yk0ifk.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816283/CleanShot_2025-02-20_at_18.17.11_2x_vdlqcm.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816283/CleanShot_2025-02-20_at_18.02.43_2x_ymkxu0.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816284/CleanShot_2025-02-20_at_18.57.48_2x_eybmaz.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816284/CleanShot_2025-02-20_at_18.58.05_2x_mbdrcp.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816284/CleanShot_2025-02-20_at_18.59.48_2x_vccw1r.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816285/CleanShot_2025-02-20_at_19.00.04_2x_vz9rh5.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816285/CleanShot_2025-02-20_at_19.00.54_2x_samnmo.png" alt="Film Concept Art" loading="lazy"></div>
         </div>
     </section>
 
     <section class="project-section">
         <div class="project-info">
-            <h2 class="project-title">Mythology & Modern Cinema</h2>
-            <p class="project-meta"><strong>Selected Works (2016-2018)</strong> | Including concept art for "Lotus Prince Nezha", "Love Apartment", and "Let Love Reignite". Exploring diverse cinematic styles from mythology to modern comedy.</p>
+            <h2 class="project-title">Love Apartment (爱情公寓大电影)</h2>
+            <p class="project-meta"><strong>Feature Film Concept Art (2018)</strong> | Cinematic visual development for the hit comedy film adaptation. Focused on stylizing vibrant modern sets and crafting imaginative, genre-blending fantasy sequences.</p>
         </div>
         <div class="masonry-grid">
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822553/CleanShot_2025-02-20_at_21.34.35_2x_2_yc4kut.png" alt="Film Concept Art" loading="lazy"></div>
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822540/CleanShot_2025-02-20_at_21.34.07_2x_2_xjvff5.jpg" alt="Film Concept Art" loading="lazy"></div>
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822553/CleanShot_2025-02-20_at_21.34.35_2x_y2xlm5.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773837346/CleanShot_2026-03-18_at_20.35.09_fk3tuj.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816285/CleanShot_2025-02-20_at_19.04.07_2x_zdktai.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816286/CleanShot_2025-02-20_at_19.04.21_2x_wuezpy.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816286/CleanShot_2025-02-20_at_19.03.31_2x_hxorbo.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816286/CleanShot_2025-02-20_at_19.04.36_2x_f4wtck.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816287/CleanShot_2025-02-20_at_19.05.16_2x_crc4fk.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816287/CleanShot_2025-02-20_at_19.04.47_2x_ux2jze.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816295/CleanShot_2025-02-20_at_19.05.40_2x_qpdwug.png" alt="Film Concept Art" loading="lazy"></div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="project-info">
+            <h2 class="project-title">Lotus Prince Nezha (莲花王子哪吒)</h2>
+            <p class="project-meta"><strong>Mythological Fantasy Concept Art (2016)</strong> | Visual development and keyframe illustrations. Designed grand fantasy environments, legendary props, and narrative moments deeply rooted in traditional Eastern aesthetics.</p>
+        </div>
+        <div class="masonry-grid">
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816328/CleanShot_2025-02-20_at_19.15.05_2x_ui2ubp.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816329/CleanShot_2025-02-20_at_19.16.20_2x_vs1tzy.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816329/CleanShot_2025-02-20_at_19.16.11_2x_zxpzqz.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816329/CleanShot_2025-02-20_at_19.16.43_2x_od29xm.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773846770/CleanShot_2026-03-18_at_23.09.54_2x_veggjd.png" alt="Film Concept Art" loading="lazy"></div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="project-info">
+            <h2 class="project-title">Like a Gunshot (像中枪一样)</h2>
+            <p class="project-meta"><strong>Modern Action & Drama</strong> | Pre-production concept art establishing the gritty, atmospheric visual tone. Explored cinematic lighting, tense urban environments, and key dramatic sequences.</p>
+        </div>
+        <div class="masonry-grid">
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816356/CleanShot_2025-02-20_at_19.20.24_2x_zqykwt.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816351/CleanShot_2025-02-20_at_19.20.47_2x_nft0wt.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816351/CleanShot_2025-02-20_at_19.20.35_2x_sf9owa.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816349/CleanShot_2025-02-20_at_19.20.57_2x_e37pqu.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816333/CleanShot_2025-02-20_at_19.19.47_2x_vdzibh.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816332/CleanShot_2025-02-20_at_19.20.12_2x_rkfnud.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816331/CleanShot_2025-02-20_at_19.19.58_2x_lwlf4d.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816331/CleanShot_2025-02-20_at_19.19.36_2x_txuica.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816330/CleanShot_2025-02-20_at_19.19.27_2x_qx917x.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816330/CleanShot_2025-02-20_at_19.19.08_2x_ccz6rz.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816330/CleanShot_2025-02-20_at_19.19.17_2x_njp8hp.png" alt="Film Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816329/CleanShot_2025-02-20_at_19.18.55_2x_j70tbj.png" alt="Film Concept Art" loading="lazy"></div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="project-info">
+            <h2 class="project-title">World of Tanks 2 (坦克争霸2) & Game Concepts</h2>
+            <p class="project-meta"><strong>Commercial Game Marketing & Concepts</strong> | High-fidelity promotional illustrations, environment concepts, and mechanical designs. Showcasing hard-surface rendering and epic battlefield atmospheres.</p>
+        </div>
+        <div class="masonry-grid">
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816349/CleanShot_2025-02-20_at_19.27.57_2x_rzxfys.png" alt="Game Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816349/CleanShot_2025-02-20_at_19.28.07_2x_iudckw.png" alt="Game Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816350/CleanShot_2025-02-20_at_19.28.31_2x_ff184t.png" alt="Game Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816350/CleanShot_2025-02-20_at_19.28.16_2x_dz5xgm.png" alt="Game Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816350/CleanShot_2025-02-20_at_19.28.41_2x_tkzweb.png" alt="Game Concept Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816351/CleanShot_2025-02-20_at_19.28.52_2x_oebjog.png" alt="Game Concept Art" loading="lazy"></div>
         </div>
     </section>
 
@@ -153,5 +204,42 @@
         © 2026 SAM LIANG. ALL RIGHTS RESERVED.
     </footer>
 
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = document.querySelector('.close-btn');
+            const images = document.querySelectorAll('.masonry-item img');
+
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    lightbox.style.display = 'flex'; 
+                    setTimeout(() => lightbox.classList.add('show'), 10);
+                    lightboxImg.src = this.src; 
+                    document.body.style.overflow = 'hidden'; 
+                });
+            });
+
+            function closeLightbox() {
+                lightbox.classList.remove('show');
+                setTimeout(() => { 
+                    lightbox.style.display = 'none'; 
+                    document.body.style.overflow = 'auto'; 
+                }, 300);
+            }
+
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', function(e) {
+                if (e.target !== lightboxImg) {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

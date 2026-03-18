@@ -12,9 +12,11 @@
         nav { position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; padding: 30px 50px; box-sizing: border-box; background: rgba(255,255,255,0.95); z-index: 1000; border-bottom: 1px solid var(--divider-color); }
         .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-decoration: none; color: var(--text-color); }
         .nav-links { display: flex; align-items: center; }
+        
+        /* 下拉菜单已同步为精简版 3 项 */
         .dropdown { position: relative; display: inline-block; margin-left: 30px; }
         .dropdown > a { text-decoration: none; color: var(--text-color); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; padding-bottom: 10px; cursor: pointer; font-weight: bold; }
-        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 180px; box-shadow: 0px 10px 30px rgba(0,0,0,0.08); z-index: 1; padding: 10px 0; border-top: 2px solid var(--text-color); }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 220px; box-shadow: 0px 10px 30px rgba(0,0,0,0.08); z-index: 1; padding: 10px 0; border-top: 2px solid var(--text-color); }
         .dropdown-content a { color: var(--text-color); padding: 12px 20px; text-decoration: none; display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; font-weight: normal; }
         .dropdown-content a:hover { background-color: #f5f5f5; color: var(--sub-color); padding-left: 25px; }
         .dropdown:hover .dropdown-content { display: block; }
@@ -26,7 +28,6 @@
             padding: 180px 50px 80px 50px; 
             text-align: center; 
             background-color: #111; 
-            /* 建议在这里放一张你最满意的个人世界观大图 */
             background-image: url('https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816409/CleanShot_2025-02-20_at_22.50.23_2x_qutt6k.png');
             background-size: cover;
             background-position: center 30%;
@@ -53,7 +54,7 @@
         .project-section { margin-bottom: 120px; }
         .project-info { padding: 0 50px; max-width: 1400px; margin: 0 auto 40px auto; display: flex; flex-direction: column; align-items: flex-start; border-left: 3px solid var(--text-color); }
         .project-title { font-size: 1.5rem; font-weight: 600; margin: 0 0 10px 20px; letter-spacing: 1px; text-transform: uppercase; }
-        .project-meta { font-size: 0.85rem; color: var(--sub-color); margin: 0 0 0 20px; max-width: 600px; line-height: 1.5; }
+        .project-meta { font-size: 0.85rem; color: var(--sub-color); margin: 0 0 0 20px; max-width: 800px; line-height: 1.6; }
 
         /* 核心：纯 CSS 瀑布流 */
         .masonry-grid {
@@ -86,6 +87,29 @@
             .project-info { padding: 0 20px; }
             .page-header { padding: 140px 20px 60px 20px; }
         }
+
+        /* Lightbox (灯箱) 完美居中修复版 */
+        .lightbox {
+            display: none; 
+            position: fixed; z-index: 2000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.95); opacity: 0; transition: opacity 0.3s ease;
+            justify-content: center; align-items: center; 
+        }
+        .lightbox.show { opacity: 1; }
+        .lightbox-content {
+            max-width: 90vw; max-height: 90vh; 
+            object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            transform: scale(0.95); transition: transform 0.3s ease;
+        }
+        .lightbox.show .lightbox-content { transform: scale(1); }
+        .close-btn {
+            position: absolute; top: 20px; right: 40px; color: #fff;
+            font-size: 40px; font-weight: 300; cursor: pointer; transition: 0.3s;
+            font-family: 'Inter', sans-serif;
+            z-index: 2001; 
+        }
+        .close-btn:hover { color: #888; }
     </style>
 </head>
 <body>
@@ -96,13 +120,12 @@
             <div class="dropdown">
                 <a href="index.html" style="font-weight: bold;">Portfolio</a>
                 <div class="dropdown-content">
-                    <a href="comics.html">Comics</a>
+                    <a href="comics.html">Comics & Storyboards</a>
                     <a href="film.html">Film Conceptart</a>
                     <a href="personal.html" style="font-weight: bold; color: #1a1a1a;">Personal Works</a>
-                    <a href="others.html">Others works</a>
                 </div>
             </div>
-            <a href="about.html">About & Resume</a>
+            <a href="about.html">About</a>
         </div>
     </nav>
 
@@ -115,28 +138,62 @@
 
     <section class="project-section">
         <div class="project-info">
-            <h2 class="project-title">Original World-building</h2>
-            <p class="project-meta"><strong>Concept Explorations</strong> | A collection of personal illustrations focusing on unique atmospheres, character designs, and narrative fragments.</p>
+            <h2 class="project-title">Original Visions & Studies</h2>
+            <p class="project-meta"><strong>World-building, Lighting & Color Studies</strong> | A curated collection of personal concept art, spontaneous sketches, and technical studies. Showcasing a continuous exploration of light, form, and narrative-driven atmospheres.</p>
         </div>
+        
         <div class="masonry-grid">
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822536/CleanShot_2025-02-20_at_21.34.07_2x_1_y6bsb5.jpg" alt="Personal Art" loading="lazy"></div>
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822543/CleanShot_2025-02-20_at_21.34.23_2x_1_dkwile.jpg" alt="Personal Art" loading="lazy"></div>
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822542/CleanShot_2025-02-20_at_21.34.07_2x_lqjyai.jpg" alt="Personal Art" loading="lazy"></div>
-             <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822550/CleanShot_2025-02-20_at_21.34.23_2x_2_frbk79.jpg" alt="Personal Art" loading="lazy"></div>
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822551/CleanShot_2025-02-20_at_21.34.23_2x_lhfmb2.jpg" alt="Personal Art" loading="lazy"></div>
-        </div>
-    </section>
-
-    <section class="project-section">
-        <div class="project-info">
-            <h2 class="project-title">Sketches & Digital Collections</h2>
-            <p class="project-meta"><strong>Daily Practice & NFT Concepts</strong> | Capturing spontaneous ideas, studying light and form, and experimenting with digital collectible formats.</p>
-        </div>
-        <div class="masonry-grid">
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822551/CleanShot_2025-02-20_at_21.34.35_2x_1_fmwaow.png" alt="Personal Art" loading="lazy"></div>
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822553/CleanShot_2025-02-20_at_21.34.35_2x_2_yc4kut.png" alt="Personal Art" loading="lazy"></div>
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822540/CleanShot_2025-02-20_at_21.34.07_2x_2_xjvff5.jpg" alt="Personal Art" loading="lazy"></div>
-            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773822553/CleanShot_2025-02-20_at_21.34.35_2x_y2xlm5.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816409/CleanShot_2025-02-20_at_22.50.23_2x_qutt6k.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841156/%E6%A2%81%E6%B9%98_1_ayaxhe.gif" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816413/CleanShot_2025-02-20_at_22.50.54_2x_ou3hej.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816414/CleanShot_2025-02-20_at_22.51.32_2x_tw65sh.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816412/CleanShot_2025-02-20_at_22.51.42_2x_rribbl.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816411/CleanShot_2025-02-20_at_22.51.16_2x_avavmk.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816440/CleanShot_2025-02-20_at_22.55.37_2x_nfgzqn.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816439/CleanShot_2025-02-20_at_22.52.48_2x_txtcyn.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816452/CleanShot_2025-02-20_at_23.04.47_2x_mpc7ra.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816453/CleanShot_2025-02-20_at_23.04.35_2x_wwjwje.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816454/CleanShot_2025-02-20_at_23.03.15_2x_mrpqww.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816456/CleanShot_2025-02-20_at_23.03.58_2x_htj527.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816498/CleanShot_2025-02-20_at_23.06.12_2x_tewq7w.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816445/CleanShot_2025-02-20_at_23.01.57_2x_xspoqz.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816445/CleanShot_2025-02-20_at_23.02.09_2x_thnykc.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816444/CleanShot_2025-02-20_at_23.02.37_2x_sxsrln.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816442/CleanShot_2025-02-20_at_22.59.34_2x_urle7j.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816442/CleanShot_2025-02-20_at_22.59.26_2x_wotfuf.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816441/CleanShot_2025-02-20_at_22.59.14_2x_wiobnw.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816441/CleanShot_2025-02-20_at_22.59.02_2x_kxjeqf.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816441/CleanShot_2025-02-20_at_22.58.47_2x_lv8gqz.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816441/CleanShot_2025-02-20_at_22.58.37_2x_yc72dv.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816414/CleanShot_2025-02-20_at_22.52.15_2x_d19w1j.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816413/CleanShot_2025-02-20_at_22.51.59_2x_ssq0rh.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816446/CleanShot_2025-02-20_at_23.02.47_2x_vcmkxu.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816440/CleanShot_2025-02-20_at_22.58.05_2x_iozelx.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816440/CleanShot_2025-02-20_at_22.54.39_2x_zv01gw.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816440/CleanShot_2025-02-20_at_22.54.52_2x_kc4x9u.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816422/CleanShot_2025-02-20_at_22.52.36_2x_ghsmnc.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841156/%E6%A2%81%E6%B9%98_2_ahopur.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841158/%E6%A2%81%E6%B9%98_6_vogpce.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841094/IMG_3237_jjcw0c.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841169/%E6%A2%81%E6%B9%98_4_o5wnik.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841219/%E6%A2%81%E6%B9%98_41_kmgjgs.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841191/%E6%A2%81%E6%B9%98_38_wq4hkr.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841190/%E6%A2%81%E6%B9%98_30_cplq43.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841189/%E6%A2%81%E6%B9%98_29_mha8iv.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841220/%E6%A2%81%E6%B9%98_63_pun3u5.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841230/%E6%A2%81%E6%B9%98_39_hoehxx.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841247/%E6%A2%81%E6%B9%98_90_eh4y4y.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816446/CleanShot_2025-02-20_at_23.00.15_2x_ghh1pl.png" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841248/%E6%A2%81%E6%B9%98_89_ks3u7y.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841322/%E6%A2%81%E6%B9%98_71_ypbfzf.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841321/%E6%A2%81%E6%B9%98_69_ibelgy.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841324/%E6%A2%81%E6%B9%98_72_enwqno.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841346/%E6%A2%81%E6%B9%98_73_p5ddfd.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841347/%E6%A2%81%E6%B9%98_74_qo9dpz.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841281/%E6%A2%81%E6%B9%98%E9%80%9F%E5%86%99_17_tgetdt.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841307/%E6%A2%81%E6%B9%98%E9%80%9F%E5%86%99_18_qmfwqa.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841035/IMG_0982_r1xz1r.jpg" alt="Personal Art" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773841032/IMG_0980_cjxdpj.jpg" alt="Personal Art" loading="lazy"></div>
         </div>
     </section>
 
@@ -144,5 +201,45 @@
         © 2026 SAM LIANG. ALL RIGHTS RESERVED.
     </footer>
 
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = document.querySelector('.close-btn');
+            const images = document.querySelectorAll('.masonry-item img');
+
+            // 点击图片放大
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    lightbox.style.display = 'flex'; // 完美居中
+                    setTimeout(() => lightbox.classList.add('show'), 10);
+                    lightboxImg.src = this.src; 
+                    document.body.style.overflow = 'hidden'; 
+                });
+            });
+
+            // 关闭功能封装
+            function closeLightbox() {
+                lightbox.classList.remove('show');
+                setTimeout(() => { 
+                    lightbox.style.display = 'none'; 
+                    document.body.style.overflow = 'auto'; 
+                }, 300);
+            }
+
+            // 点击关闭按钮或背景空白处关闭
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', function(e) {
+                if (e.target !== lightboxImg) {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

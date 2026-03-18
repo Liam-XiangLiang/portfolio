@@ -3,103 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comics | SAM LIANG</title>
+    <title>Comics & Storyboards | SAM LIANG</title>
     <style>
         :root { --text-color: #1a1a1a; --sub-color: #888; --bg-color: #fff; --divider-color: #eee; }
         body { margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-color); color: var(--text-color); }
         
-        /* 导航栏 */
         nav { position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between; padding: 30px 50px; box-sizing: border-box; background: rgba(255,255,255,0.95); z-index: 1000; border-bottom: 1px solid var(--divider-color); }
         .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-decoration: none; color: var(--text-color); }
         .nav-links { display: flex; align-items: center; }
         .dropdown { position: relative; display: inline-block; margin-left: 30px; }
         .dropdown > a { text-decoration: none; color: var(--text-color); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; padding-bottom: 10px; cursor: pointer; font-weight: bold; }
-        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 180px; box-shadow: 0px 10px 30px rgba(0,0,0,0.08); z-index: 1; padding: 10px 0; border-top: 2px solid var(--text-color); }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 220px; box-shadow: 0px 10px 30px rgba(0,0,0,0.08); z-index: 1; padding: 10px 0; border-top: 2px solid var(--text-color); }
         .dropdown-content a { color: var(--text-color); padding: 12px 20px; text-decoration: none; display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; font-weight: normal; }
         .dropdown-content a:hover { background-color: #f5f5f5; color: var(--sub-color); padding-left: 25px; }
         .dropdown:hover .dropdown-content { display: block; }
         .nav-links > a { text-decoration: none; color: var(--text-color); margin-left: 30px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* 优化：暗色系背景图横幅 */
         .page-header { 
-            position: relative;
-            padding: 180px 50px 80px 50px; 
-            text-align: center; 
-            background-color: #111; /* 底色改为深色 */
-            background-image: url('https://res.cloudinary.com/duzk5t3qp/image/upload/v1773816353/CleanShot_2025-02-20_at_21.26.56_2x_dgkxkv.png');
-            background-size: cover;
-            background-position: center 30%;
-            overflow: hidden;
-            margin-bottom: 80px;
+            position: relative; padding: 180px 50px 80px 50px; text-align: center; 
+            background-color: #111; 
+            background-image: url('https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816353/CleanShot_2025-02-20_at_21.26.56_2x_dgkxkv.png');
+            background-size: cover; background-position: center 30%; overflow: hidden; margin-bottom: 80px;
         }
-        /* 改为黑色半透明遮罩 */
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.6); /* 0.6代表60%的不透明度 */
-            z-index: 1;
-        }
-        .header-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        /* 标题文字反白 */
-        .page-title { 
-            font-size: 2.5rem; 
-            font-weight: 300; 
-            letter-spacing: 4px; 
-            margin-bottom: 20px; 
-            text-transform: uppercase; 
-            color: #ffffff; /* 纯白标题 */
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* 增加一点阴影让文字更突出 */
-        }
-        .page-desc { 
-            color: #eeeeee; /* 浅灰副标题 */
-            font-size: 0.95rem; 
-            line-height: 1.6; 
-            text-shadow: 0 1px 5px rgba(0,0,0,0.5);
-        }
+        .page-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.6); z-index: 1; }
+        .header-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+        .page-title { font-size: 2.5rem; font-weight: 300; letter-spacing: 4px; margin-bottom: 20px; text-transform: uppercase; color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .page-desc { color: #eeeeee; font-size: 0.95rem; line-height: 1.6; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
 
-        /* 作品区块设置 */
         .project-section { margin-bottom: 120px; }
         .project-info { padding: 0 50px; max-width: 1400px; margin: 0 auto 40px auto; display: flex; flex-direction: column; align-items: flex-start; border-left: 3px solid var(--text-color); }
         .project-title { font-size: 1.5rem; font-weight: 600; margin: 0 0 10px 20px; letter-spacing: 1px; text-transform: uppercase; }
-        .project-meta { font-size: 0.85rem; color: var(--sub-color); margin: 0 0 0 20px; max-width: 600px; line-height: 1.5; }
+        .project-meta { font-size: 0.85rem; color: var(--sub-color); margin: 0 0 0 20px; max-width: 800px; line-height: 1.6; }
 
-        /* 核心：纯 CSS 瀑布流 */
-        .masonry-grid {
-            column-count: 3;
-            column-gap: 20px;
-            padding: 0 50px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 20px;
-            overflow: hidden;
-            background: #f9f9f9;
-        }
-        .masonry-item img {
-            width: 100%;
-            display: block;
-            transition: transform 0.4s ease;
-            cursor: pointer;
-        }
-        .masonry-item img:hover {
-            transform: scale(1.03);
-        }
+        .masonry-grid { column-count: 3; column-gap: 20px; padding: 0 50px; max-width: 1400px; margin: 0 auto; }
+        .masonry-item { break-inside: avoid; margin-bottom: 20px; overflow: hidden; background: #f9f9f9; }
+        .masonry-item img { width: 100%; display: block; transition: transform 0.4s ease; cursor: pointer; }
+        .masonry-item img:hover { transform: scale(1.03); }
 
-        /* 响应式调整 */
         @media (max-width: 1024px) { .masonry-grid { column-count: 2; } }
-        @media (max-width: 600px) { 
-            .masonry-grid { column-count: 1; padding: 0 20px; }
-            .project-info { padding: 0 20px; }
-            .page-header { padding: 140px 20px 60px 20px; }
-        }
+        @media (max-width: 600px) { .masonry-grid { column-count: 1; padding: 0 20px; } .project-info { padding: 0 20px; } .page-header { padding: 140px 20px 60px 20px; } }
+
+        .lightbox { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); opacity: 0; transition: opacity 0.3s ease; justify-content: center; align-items: center; }
+        .lightbox.show { opacity: 1; }
+        .lightbox-content { max-width: 90vw; max-height: 90vh; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,0.8); transform: scale(0.95); transition: transform 0.3s ease; }
+        .lightbox.show .lightbox-content { transform: scale(1); }
+        .close-btn { position: absolute; top: 20px; right: 40px; color: #fff; font-size: 40px; font-weight: 300; cursor: pointer; transition: 0.3s; font-family: 'Inter', sans-serif; z-index: 2001; }
+        .close-btn:hover { color: #888; }
     </style>
 </head>
 <body>
@@ -110,20 +59,19 @@
             <div class="dropdown">
                 <a href="index.html" style="font-weight: bold;">Portfolio</a>
                 <div class="dropdown-content">
-                    <a href="comics.html" style="font-weight: bold; color: #1a1a1a;">Comics</a>
+                    <a href="comics.html" style="font-weight: bold; color: #1a1a1a;">Comics & Storyboards</a>
                     <a href="film.html">Film Conceptart</a>
                     <a href="personal.html">Personal Works</a>
-                    <a href="others.html">Others works</a>
                 </div>
             </div>
-            <a href="about.html">About & Resume</a>
+            <a href="about.html">About</a>
         </div>
     </nav>
 
     <header class="page-header">
         <div class="header-content">
-            <h1 class="page-title">Graphic Novels</h1>
-            <p class="page-desc">Exploring narrative and world-building through sequential art. Featuring a blend of traditional Chinese aesthetics and modern digital painting techniques.</p>
+            <h1 class="page-title">Comics & Storyboards</h1>
+            <p class="page-desc">Exploring narrative and world-building through sequential art, commercial storyboarding, and original graphic novels.</p>
         </div>
     </header>
 
@@ -139,6 +87,24 @@
             <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816363/CleanShot_2025-02-20_at_21.29.05_2x_ayofjg.png" alt="Mo Lu Han Art" loading="lazy"></div>
             <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816365/CleanShot_2025-02-20_at_21.29.17_2x_tnsh6c.png" alt="Mo Lu Han Art" loading="lazy"></div>
             <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816361/CleanShot_2025-02-20_at_21.29.28_2x_aejbwc.png" alt="Mo Lu Han Art" loading="lazy"></div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="project-info">
+            <h2 class="project-title">The Chill of Strangers: Process & Ideation</h2>
+            <p class="project-meta"><strong>From Rough Sketches to World-Building</strong> | Revealing the behind-the-scenes creative process. This section highlights early conceptual sketches, composition studies, and visual development, demonstrating how raw narrative ideas are translated into compelling visual flow and a cohesive universe.</p>
+        </div>
+        <div class="masonry-grid">
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773846761/CleanShot_2026-03-18_at_23.07.00_2x_ceaect.png" alt="Process Sketch" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773846761/CleanShot_2026-03-18_at_23.07.12_2x_rpnazi.png" alt="Process Sketch" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773846762/CleanShot_2026-03-18_at_23.07.20_2x_rujet1.png" alt="Process Sketch" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773846765/CleanShot_2026-03-18_at_23.07.45_2x_efc25b.png" alt="Process Sketch" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773846767/CleanShot_2026-03-18_at_23.08.46_2x_mminjb.png" alt="Process Sketch" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773846765/CleanShot_2026-03-18_at_23.08.10_2x_z07do6.png" alt="Process Sketch" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773846773/CleanShot_2026-03-18_at_23.08.22_2x_tok18o.png" alt="Process Sketch" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773846777/CleanShot_2026-03-18_at_23.08.57_2x_znomir.png" alt="Process Sketch" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773846785/CleanShot_2026-03-18_at_23.08.35_2x_szvmir.png" alt="Process Sketch" loading="lazy"></div>
         </div>
     </section>
 
@@ -162,7 +128,7 @@
     <section class="project-section">
         <div class="project-info">
             <h2 class="project-title">Tales from Tang Poetry (唐诗里的故事)</h2>
-            <p class="project-meta">Visualizing the classical masterpieces of Chinese literature through evocative environments and conceptual character designs.</p>
+            <p class="project-meta"><strong>Art Director & Lead Creator</strong> | A critically acclaimed, published graphic novel. Directed a team of illustrators to visualize classical Chinese masterpieces, establishing the overarching visual style, providing hands-on art direction, and executing the final visual polish.</p>
         </div>
         <div class="masonry-grid">
             <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816262/CleanShot_2025-02-20_at_14.54.06_2x_t3bse5.png" alt="Tang Poetry Art" loading="lazy"></div>
@@ -178,9 +144,60 @@
         </div>
     </section>
 
+    <section class="project-section">
+        <div class="project-info">
+            <h2 class="project-title">Commercial Storyboards & IP Design</h2>
+            <p class="project-meta"><strong>Storyboarding & Brand Characters</strong> | Translating scripts into visual sequences for commercial microfilms and conceptualizing character IPs for brand initiatives.</p>
+        </div>
+        <div class="masonry-grid">
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773846776/CleanShot_2026-03-18_at_23.09.25_2x_pmzhgx.png" alt="Commercial Storyboard" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773846769/CleanShot_2026-03-18_at_23.09.35_2x_y76dyf.png" alt="Commercial Storyboard" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816354/CleanShot_2025-02-20_at_19.35.10_2x_smobf5.png" alt="Commercial Storyboard" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816353/CleanShot_2025-02-20_at_19.35.24_2x_hbvukm.png" alt="Commercial Storyboard" loading="lazy"></div>
+            <div class="masonry-item"><img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816355/CleanShot_2025-02-20_at_19.35.40_2x_pyauna.png" alt="Commercial Storyboard" loading="lazy"></div>
+        </div>
+    </section>
+
     <footer style="text-align: center; padding: 50px; color: #bbb; font-size: 0.7rem; letter-spacing: 2px; border-top: 1px solid #eee;">
         © 2026 SAM LIANG. ALL RIGHTS RESERVED.
     </footer>
 
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = document.querySelector('.close-btn');
+            const images = document.querySelectorAll('.masonry-item img');
+
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    lightbox.style.display = 'flex'; 
+                    setTimeout(() => lightbox.classList.add('show'), 10);
+                    lightboxImg.src = this.src; 
+                    document.body.style.overflow = 'hidden'; 
+                });
+            });
+
+            function closeLightbox() {
+                lightbox.classList.remove('show');
+                setTimeout(() => { 
+                    lightbox.style.display = 'none'; 
+                    document.body.style.overflow = 'auto'; 
+                }, 300);
+            }
+
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', function(e) {
+                if (e.target !== lightboxImg) {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
