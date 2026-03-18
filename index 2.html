@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAM LIANG | Portfolio</title>
+    <title>LIAM LIANG | Portfolio</title>
     <style>
         :root { --text-color: #1a1a1a; --sub-color: #888; --bg-color: #fff; --section-bg: #f7f7f7; }
         body { margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-color); color: var(--text-color); }
@@ -23,12 +23,12 @@
 
         .nav-links > a { text-decoration: none; color: var(--text-color); margin-left: 30px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* 首页大图区 - 优化：高度调整为 60vh，让下方分类直接露出 */
-        .hero { height: 60vh; display: flex; align-items: center; justify-content: center; padding-top: 100px; padding-bottom: 20px; box-sizing: border-box; background: #fff; }
-        .hero img { max-height: 100%; max-width: 85%; width: auto; height: auto; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
+        /* 首页大图区 */
+        .hero { height: 90vh; display: flex; align-items: center; justify-content: center; padding-top: 90px; padding-bottom: 40px; box-sizing: border-box; background: #fff; }
+        .hero img { max-height: 100%; max-width: 90%; width: auto; height: auto; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
 
-        /* 分类板块 - 优化：缩减顶部 padding，让元素更紧凑 */
-        .category-section { background: var(--section-bg); padding: 40px 0 100px 0; }
+        /* 分类板块 - 改为 3 列 */
+        .category-section { background: var(--section-bg); padding: 80px 0 100px 0; }
         .categories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 0 50px; max-width: 1400px; margin: 0 auto; }
         
         .cat-item { position: relative; text-decoration: none; overflow: hidden; height: 400px; background: #ddd; }
@@ -40,7 +40,7 @@
         .cat-title { color: #fff; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
 
         @media (max-width: 1024px) { .categories { grid-template-columns: 1fr; height: auto;} .cat-item{height: 300px;} }
-        @media (max-width: 600px) { nav { padding: 20px; } .hero { height: 50vh; } }
+        @media (max-width: 600px) { nav { padding: 20px; } .hero { height: 70vh; } }
     </style>
 </head>
 <body>

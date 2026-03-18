@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | SAM LIANG</title>
+    <title>About| SAM LIANG</title>
     <style>
         :root { --text-color: #1a1a1a; --sub-color: #666; --line-color: #eaeaea; --bg-color: #fff; }
         body { margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-color); color: var(--text-color); line-height: 1.5; }
@@ -13,7 +13,7 @@
         .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-decoration: none; color: var(--text-color); }
         .nav-links { display: flex; align-items: center; }
         
-        /* 下拉菜单 */
+        /* 下拉菜单 (宽度调整为 220px 以适应长文本) */
         .dropdown { position: relative; display: inline-block; margin-left: 30px; }
         .dropdown > a { text-decoration: none; color: var(--text-color); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; padding-bottom: 10px; cursor: pointer; }
         .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 220px; box-shadow: 0px 10px 30px rgba(0,0,0,0.08); z-index: 1; padding: 10px 0; border-top: 2px solid var(--text-color); }
@@ -32,38 +32,11 @@
         .profile-info h2 { font-size: 1rem; color: var(--sub-color); font-weight: 400; margin: 0 0 12px 0; letter-spacing: 1px; }
         .profile-info p { font-size: 0.9rem; color: #444; margin-bottom: 20px; line-height: 1.5; }
         
-        /* 联系方式组合布局 */
-        .contact-group { display: flex; align-items: center; gap: 20px; margin-top: 10px; }
+        /* 按钮设计 */
         .contact-btn { display: inline-block; padding: 8px 20px; background: var(--text-color); color: #fff; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; border: 1px solid var(--text-color); }
         .contact-btn:hover { background: #fff; color: var(--text-color); }
 
-        /* 新增：一键复制邮箱效果 (Tooltip) */
-        .email-display { 
-            position: relative; font-size: 0.95rem; color: var(--text-color); font-weight: 500; 
-            letter-spacing: 0.5px; cursor: pointer; padding: 6px 12px; border-radius: 4px; 
-            transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 6px;
-        }
-        .email-display:hover { background-color: #f0f0f0; }
-        
-        /* 悬浮提示框主体 */
-        .email-display::after {
-            content: attr(data-tooltip); position: absolute; bottom: 110%; left: 50%; 
-            transform: translateX(-50%); padding: 5px 10px; background-color: #222; color: #fff; 
-            font-size: 0.75rem; border-radius: 4px; white-space: nowrap; opacity: 0; 
-            pointer-events: none; transition: all 0.2s ease; font-weight: normal; letter-spacing: 1px;
-        }
-        /* 悬浮提示框小箭头 */
-        .email-display::before {
-            content: ''; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
-            border-width: 5px; border-style: solid; border-color: #222 transparent transparent transparent;
-            opacity: 0; pointer-events: none; transition: all 0.2s ease;
-        }
-        .email-display:hover::after, .email-display:hover::before { opacity: 1; bottom: 120%; }
-        /* 复制成功后的绿色状态 */
-        .email-display.copied::after { background-color: #28a745; }
-        .email-display.copied::before { border-color: #28a745 transparent transparent transparent; }
-
-        /* 简历内容排版 */
+        /* 简历内容排版 - 极限紧凑版 */
         .section-title { font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; color: var(--text-color); display: flex; align-items: center; }
         .section-title::after { content: ''; flex: 1; height: 1px; background: var(--line-color); margin-left: 20px; }
 
@@ -86,7 +59,6 @@
         /* 响应式调整 */
         @media (max-width: 768px) {
             .profile-section { flex-direction: column; text-align: center; gap: 20px; }
-            .contact-group { justify-content: center; flex-direction: column; gap: 12px; }
             .job-header { flex-direction: column; }
             .job-date { margin-top: 2px; }
             .grid-2 { grid-template-columns: 1fr; }
@@ -118,14 +90,7 @@
                 <h1>SAM LIANG</h1>
                 <h2>Concept Artist & Visual Storyteller | Los Angeles, CA</h2>
                 <p>I’m a digital painting artist with a passion for bringing imaginative worlds to life in films, games, and comics. With a proven track record in creating visually stunning artwork, I specialize in concept art, character design, and storytelling visuals that captivate audiences. Currently based in Los Angeles with full U.S. work authorization (EB-1A Extraordinary Talent Visa), I'm eager to collaborate with creative teams to craft unforgettable visual experiences.</p>
-                
-                <div class="contact-group">
-                    <div class="email-display" id="copy-email-btn" data-tooltip="Copy">
-                        <span>📧</span> liangxiang897@gmail.com
-                    </div>
-                    <a href="mailto:liangxiang897@gmail.com" class="contact-btn">Contact Me</a>
-                </div>
-                
+                <a href="mailto:liangxiang897@gmail.com" class="contact-btn">Contact Me</a>
             </div>
         </section>
 
@@ -301,29 +266,5 @@
         © 2026 SAM LIANG. ALL RIGHTS RESERVED.
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const copyBtn = document.getElementById('copy-email-btn');
-            
-            copyBtn.addEventListener('click', function() {
-                const email = "liangxiang897@gmail.com";
-                
-                // 执行复制到剪贴板
-                navigator.clipboard.writeText(email).then(() => {
-                    // 复制成功后改变状态和提示文字
-                    copyBtn.setAttribute('data-tooltip', 'Copied!');
-                    copyBtn.classList.add('copied');
-                    
-                    // 2秒后恢复原状
-                    setTimeout(() => {
-                        copyBtn.setAttribute('data-tooltip', 'Copy');
-                        copyBtn.classList.remove('copied');
-                    }, 2000);
-                }).catch(err => {
-                    console.error('Failed to copy: ', err);
-                });
-            });
-        });
-    </script>
 </body>
 </html>
