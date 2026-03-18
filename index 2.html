@@ -9,7 +9,7 @@
         
         html, body { height: 100%; margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-color); color: var(--text-color); overflow: hidden; }
 
-        /* 导航栏 */
+        /* 导航栏：恢复最精致的对齐和下划线动画 */
         nav { 
             position: fixed; top: 0; width: 100%; height: 80px; 
             display: flex; justify-content: space-between; align-items: center; 
@@ -18,15 +18,22 @@
             backdrop-filter: blur(15px); z-index: 1000;
         }
         .logo { font-size: 1rem; font-weight: 800; letter-spacing: 3px; text-decoration: none; color: var(--text-color); }
+        
         .nav-links { display: flex; align-items: center; height: 100%; }
+        
         .dropdown { position: relative; height: 100%; display: flex; align-items: center; margin-left: 40px; }
         .dropdown > a { 
             text-decoration: none; color: var(--text-color); font-size: 0.8rem; 
             text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; 
             padding: 10px 0; font-weight: 600; position: relative;
         }
-        .dropdown > a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1.5px; background: var(--text-color); transition: width 0.3s ease; }
+        /* 经典下划线动画 */
+        .dropdown > a::after { 
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1.5px; 
+            background: var(--text-color); transition: width 0.3s ease; 
+        }
         .dropdown:hover > a::after { width: 100%; }
+
         .dropdown-content { 
             display: none; position: absolute; top: 80%; right: 0; 
             background: #fff; min-width: 220px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
@@ -34,25 +41,98 @@
             animation: fadeIn 0.3s ease forwards;
         }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
         .dropdown-content a { color: #1a1a1a; padding: 12px 25px; text-decoration: none; display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s; }
         .dropdown-content a:hover { background: #f9f9f9; padding-left: 35px; }
         .dropdown:hover .dropdown-content { display: block; }
-        .about-link { text-decoration: none; color: #1a1a1a; margin-left: 40px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; transition: opacity 0.3s; }
+
+        .about-link { 
+            text-decoration: none; color: #1a1a1a; margin-left: 40px; 
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; 
+            font-weight: 600; transition: opacity 0.3s;
+        }
         .about-link:hover { opacity: 0.5; }
 
-        /* 核心布局 */
+        /* 核心布局：6:4 比例，大屏居中聚拢 */
         .split-container {
-            display: flex; height: 100vh; max-width: 1600px; 
-            margin: 0 auto; padding: 120px 50px 80px 50px; 
-            box-sizing: border-box; gap: 60px;         
+            display: flex;
+            height: 100vh;
+            max-width: 1600px; 
+            margin: 0 auto;    
+            padding: 120px 50px 80px 50px; 
+            box-sizing: border-box;
+            gap: 60px;         
         }
-        .left-hero { flex: 6; display: flex; align-items: center; justify-content: flex-end; overflow: hidden; }
-        .left-hero img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.08)); }
-        .right-menu-wrapper { flex: 4; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
-        .right-menu-content { width: 100%; max-width: 420px; height: 55%; display: flex; flex-direction: column; gap: 15px; }
-        .cat-item { flex: 1; position: relative; text-decoration: none; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #000; border-radius: 2px; }
-        .cat-item img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.45; transition: 0.6s ease; }
-        .cat-item span { position: relative; z-index: 2; color: #fff; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; border: 1px solid rgba(255,255,255,0.3); padding: 10px 20px; background: rgba(0,0,0,0.1); backdrop-filter: blur(5px); transition: all 0.3s ease; }
+
+        /* 左侧英雄图 */
+        .left-hero {
+            flex: 6;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; 
+            overflow: hidden;
+        }
+        .left-hero img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.08));
+        }
+
+        /* 右侧分类菜单 */
+        .right-menu-wrapper {
+            flex: 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: flex-start; 
+        }
+
+        .right-menu-content {
+            width: 100%;
+            max-width: 420px; 
+            height: 55%; 
+            display: flex;
+            flex-direction: column;
+            gap: 15px; 
+        }
+
+        .cat-item {
+            flex: 1;
+            position: relative;
+            text-decoration: none;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            border-radius: 2px;
+        }
+
+        .cat-item img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.45;
+            transition: 0.6s ease;
+        }
+
+        .cat-item span {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
         .cat-item:hover img { opacity: 0.75; transform: scale(1.05); }
         .cat-item:hover span { background: #fff; color: #000; border-color: #fff; }
 
@@ -64,35 +144,15 @@
             .right-menu-wrapper { flex: none; align-items: center; width: 100%; }
             .right-menu-content { height: auto; }
             .cat-item { height: 120px; }
-            footer { position: relative; left: 0; bottom: 0; padding: 40px 0; }
+            footer { position: relative; left: 0; bottom: 0; padding: 20px 0; }
         }
 
-        /* 页脚优化：版权左，邮箱右 */
+        /* 页脚：完美居中显示 */
         footer {
             position: fixed; bottom: 25px; left: 0; width: 100%;
-            text-align: center; z-index: 10;
+            text-align: center; color: #ccc; font-size: 0.6rem; letter-spacing: 2px;
+            pointer-events: none;
         }
-        .footer-content { 
-            display: flex; justify-content: center; align-items: center; 
-            gap: 15px; color: #444; font-size: 0.8rem; letter-spacing: 1px; 
-        }
-        .footer-divider { color: #ccc; }
-        
-        .email-copy { 
-            cursor: pointer; position: relative; transition: color 0.3s;
-            font-weight: 600; display: flex; align-items: center; gap: 6px;
-        }
-        .email-copy:hover { color: #000; }
-
-        /* Tooltip 复制提示 */
-        .email-copy::after {
-            content: attr(data-tooltip); position: absolute; bottom: 130%; left: 50%; 
-            transform: translateX(-50%); padding: 5px 10px; background: #222; color: #fff; 
-            font-size: 0.7rem; border-radius: 4px; opacity: 0; transition: 0.2s; pointer-events: none;
-            font-weight: normal; letter-spacing: 0.5px;
-        }
-        .email-copy:hover::after { opacity: 1; }
-        .email-copy.copied::after { background: #28a745; }
     </style>
 </head>
 <body>
@@ -135,30 +195,7 @@
         </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div>© 2026 SAM LIANG. ALL RIGHTS RESERVED.</div>
-            <span class="footer-divider">|</span>
-            <div class="email-copy" id="emailCopy" data-tooltip="Copy Email">
-                <span>📮</span> liangxiang897@gmail.com
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        document.getElementById('emailCopy').addEventListener('click', function() {
-            const email = "liangxiang897@gmail.com";
-            navigator.clipboard.writeText(email).then(() => {
-                const el = this;
-                el.setAttribute('data-tooltip', 'Copied!');
-                el.classList.add('copied');
-                setTimeout(() => {
-                    el.setAttribute('data-tooltip', 'Copy Email');
-                    el.classList.remove('copied');
-                }, 2000);
-            });
-        });
-    </script>
+    <footer>© 2026 SAM LIANG. ALL RIGHTS RESERVED.</footer>
 
 </body>
 </html>
