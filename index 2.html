@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAM LIANG | Portfolio</title>
+    <style>
+        :root { --text-color: #1a1a1a; --sub-color: #888; --bg-color: #fff; }
+        
+        html, body { height: 100%; margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-color); color: var(--text-color); overflow: hidden; }
+
+        /* 1. 导航栏：保持最精致的对齐和动画 */
+        nav { 
+            position: fixed; top: 0; width: 100%; height: 80px; 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 0 50px; box-sizing: border-box; 
+            background: rgba(255,255,255,0.95); 
+            backdrop-filter: blur(15px); z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 1rem; font-weight: 800; letter-spacing: 3px; text-decoration: none; color: var(--text-color); transition: opacity 0.3s; }
+        .logo:hover { opacity: 0.6; }
+
+        .nav-links { display: flex; align-items: center; height: 100%; }
+        .dropdown { position: relative; height: 100%; display: flex; align-items: center; margin-left: 40px; }
+        .dropdown > a { 
+            text-decoration: none; color: var(--text-color); font-size: 0.8rem; 
+            text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; 
+            padding: 10px 0; font-weight: 600; position: relative;
+        }
+        .dropdown > a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1.5px; background: var(--text-color); transition: width 0.3s ease; }
+        .dropdown:hover > a::after { width: 100%; }
+
+        .dropdown-content { 
+            display: none; position: absolute; top: 80%; right: 0; 
+            background-color: #fff; min-width: 220px; 
+            box-shadow: 0px 20px 40px rgba(0,0,0,0.1); 
+            padding: 15px 0; border-top: 2px solid var(--text-color); 
+            animation: fadeIn 0.3s ease forwards;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .dropdown-content a { color: var(--text-color); padding: 12px 25px; text-decoration: none; display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s; }
+        .dropdown-content a:hover { background-color: #f9f9f9; padding-left: 35px; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        .nav-links > .about-link { text-decoration: none; color: var(--text-color); margin-left: 40px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; transition: opacity 0.3s; }
+        .nav-links > .about-link:hover { opacity: 0.5; }
+
+        /* 2. 主容器：沉浸式全屏 */
+        .home-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px 40px 20px;
+            box-sizing: border-box;
+            background: linear-gradient(to bottom, #fff 0%, #fcfcfc 100%);
+        }
+
+        /* 主视觉展示区：最大化展示大图 */
+        .main-hero {
+            flex: 1;
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .main-hero img {
+            max-height: 85%;
+            max-width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 50px rgba(0,0,0,0.08));
+        }
+
+        /* 3. 分类入口：这就是你要的那种悬浮按钮视觉效果 */
+        .category-overlay {
+            width: 100%;
+            max-width: 1100px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .cat-card {
+            position: relative;
+            height: 110px; /* 精致的横向高度 */
+            text-decoration: none;
+            overflow: hidden;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .cat-card img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.55; /* 控制背景图片的暗度 */
+            transition: 0.8s ease;
+        }
+
+        .cat-card span {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            font-size: 0.7rem; /* 稍微精简字体 */
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid rgba(255,255,255,0.35); /* 半透明边框 */
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.15);
+            backdrop-filter: blur(5px); /* 磨砂效果 */
+            transition: 0.3s;
+        }
+
+        .cat-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .cat-card:hover img { opacity: 0.8; transform: scale(1.05); }
+        .cat-card:hover span { background: #fff; color: #000; border-color: #fff; }
+
+        /* 页脚：固定在底部，不干扰布局 */
+        footer { position: fixed; bottom: 15px; width: 100%; text-align: center; color: #bbb; font-size: 0.65rem; letter-spacing: 1px; z-index: 10; pointer-events: none; }
+
+        /* 响应式调整 */
+        @media (max-width: 1024px) {
+            .category-overlay { grid-template-columns: 1fr; max-width: 400px; }
+            .cat-card { height: 90px; }
+            .home-container { overflow-y: auto; height: auto; padding-top: 100px; padding-bottom: 80px; }
+            .main-hero img { max-height: 40vh; margin-bottom: 30px; }
+            html, body { overflow-y: auto; }
+            footer { position: relative; padding: 20px 0; bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">SAM LIANG</a>
+        <div class="nav-links">
+            <div class="dropdown">
+                <a href="index.html" style="font-weight: bold;">Portfolio</a>
+                <div class="dropdown-content">
+                    <a href="comics.html">Comics & Storyboards</a>
+                    <a href="film.html">Film Conceptart</a>
+                    <a href="personal.html">Personal Works</a>
+                </div>
+            </div>
+            <a href="about.html" class="about-link">About</a>
+        </div>
+    </nav>
+
+    <div class="home-container">
+        <section class="main-hero">
+            <img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773817266/samliang000_dngqzl.png" alt="Sam Liang Featured Work">
+        </section>
+
+        <section class="category-overlay">
+            <a href="comics.html" class="cat-card">
+                <img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816254/CleanShot_2025-02-20_at_14.48.03_2x_c8vkck.png" alt="Comics">
+                <span>Comics & Storyboards</span>
+            </a>
+            <a href="film.html" class="cat-card">
+                <img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816263/CleanShot_2025-02-20_at_14.58.26_2x_jt2u9w.png" alt="Film">
+                <span>Film Conceptart</span>
+            </a>
+            <a href="personal.html" class="cat-card">
+                <img src="https://res.cloudinary.com/duzk5t3qp/image/upload/f_auto,q_auto/v1773816409/CleanShot_2025-02-20_at_22.50.23_2x_qutt6k.png" alt="Personal">
+                <span>Personal Works</span>
+            </a>
+        </section>
+    </div>
+
+    <footer>
+        © 2026 SAM LIANG. ALL RIGHTS RESERVED.
+    </footer>
+
+</body>
+</html>
