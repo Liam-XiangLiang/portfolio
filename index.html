@@ -7,7 +7,9 @@
     <style>
         :root { --text-color: #1a1a1a; --sub-color: #888; --bg-color: #fff; }
         
-        html, body { height: 100%; margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-color); color: var(--text-color); overflow: hidden; }
+        /* 电脑端禁止溢出，手机端允许滚动 */
+        html, body { height: 100%; margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-color); color: var(--text-color); overflow-x: hidden; }
+        body { overflow-y: hidden; }
 
         /* 导航栏 */
         nav { 
@@ -56,18 +58,38 @@
         .cat-item:hover img { opacity: 0.75; transform: scale(1.05); }
         .cat-item:hover span { background: #fff; color: #000; border-color: #fff; }
 
-        /* 响应式 */
+        /* --- 响应式修复重点 --- */
         @media (max-width: 1024px) {
-            .split-container { flex-direction: column; overflow-y: auto; height: auto; padding-top: 100px; gap: 30px; }
-            html, body { overflow-y: auto; }
-            .left-hero { flex: none; height: 50vh; justify-content: center; }
+            body { overflow-y: auto; } /* 手机端允许滚动 */
+            .split-container { 
+                flex-direction: column; 
+                height: auto; 
+                padding-top: 100px; 
+                padding-bottom: 20px; 
+                gap: 30px; 
+            }
+            .left-hero { flex: none; height: auto; justify-content: center; padding: 20px 0; }
+            .left-hero img { max-height: 50vh; width: auto; }
             .right-menu-wrapper { flex: none; align-items: center; width: 100%; }
-            .right-menu-content { height: auto; }
-            .cat-item { height: 120px; }
-            footer { position: relative; left: 0; bottom: 0; padding: 40px 0; }
+            .right-menu-content { height: auto; min-height: 400px; gap: 10px; }
+            .cat-item { height: 120px; flex: none; width: 100%; }
+            
+            /* 手机端取消固定定位，防止遮挡内容 */
+            footer { 
+                position: relative !important; 
+                bottom: 0 !important; 
+                margin-top: 40px; 
+                padding: 30px 20px !important; 
+            }
+            .footer-content {
+                flex-direction: column; /* 手机端如果太挤可以自动换行 */
+                gap: 10px;
+                font-size: 0.75rem;
+            }
+            .footer-divider { display: none; } /* 手机端隐藏竖线 */
         }
 
-        /* 页脚优化：版权左，邮箱右 */
+        /* 电脑端页脚固定 */
         footer {
             position: fixed; bottom: 25px; left: 0; width: 100%;
             text-align: center; z-index: 10;
@@ -84,7 +106,6 @@
         }
         .email-copy:hover { color: #000; }
 
-        /* Tooltip 复制提示 */
         .email-copy::after {
             content: attr(data-tooltip); position: absolute; bottom: 130%; left: 50%; 
             transform: translateX(-50%); padding: 5px 10px; background: #222; color: #fff; 
