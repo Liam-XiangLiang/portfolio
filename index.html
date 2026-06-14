@@ -20,7 +20,7 @@
         html, body { height: 100%; margin: 0; font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-color); color: var(--text-color); overflow-x: hidden; }
         body { overflow-y: hidden; }
 
-        /* 导航栏 */
+        /* 🚀 优化后的导航栏：去掉折叠下拉，全面平铺展示 */
         nav { 
             position: fixed; top: 0; width: 100%; height: 80px; 
             display: flex; justify-content: space-between; align-items: center; 
@@ -30,26 +30,19 @@
         }
         .logo { font-size: 1rem; font-weight: 800; letter-spacing: 3px; text-decoration: none; color: var(--text-color); }
         .nav-links { display: flex; align-items: center; height: 100%; }
-        .dropdown { position: relative; height: 100%; display: flex; align-items: center; margin-left: 40px; }
-        .dropdown > a { 
+        
+        /* 统一平铺后的导航项按钮样式 */
+        .nav-item { 
             text-decoration: none; color: var(--text-color); font-size: 0.8rem; 
-            text-transform: uppercase; letter-spacing: 1.5px; cursor: pointer; 
+            text-transform: uppercase; letter-spacing: 1.5px; 
             padding: 10px 0; font-weight: 600; position: relative;
+            margin-left: 40px;
+            transition: opacity 0.3s ease;
         }
-        .dropdown > a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1.5px; background: var(--text-color); transition: width 0.3s ease; }
-        .dropdown:hover > a::after { width: 100%; }
-        .dropdown-content { 
-            display: none; position: absolute; top: 80%; right: 0; 
-            background: #fff; min-width: 220px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
-            padding: 15px 0; border-top: 2px solid #000;
-            animation: fadeIn 0.3s ease forwards;
-        }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .dropdown-content a { color: #1a1a1a; padding: 12px 25px; text-decoration: none; display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s; }
-        .dropdown-content a:hover { background: #f9f9f9; padding-left: 35px; }
-        .dropdown:hover .dropdown-content { display: block; }
-        .about-link { text-decoration: none; color: #1a1a1a; margin-left: 40px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; transition: opacity 0.3s; }
-        .about-link:hover { opacity: 0.5; }
+        /* 为所有展开后的导航按钮增加优雅的下划线跟随效果 */
+        .nav-item::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1.5px; background: var(--text-color); transition: width 0.3s ease; }
+        .nav-item:hover::after { width: 100%; }
+        .nav-item.active { font-weight: 800; }
 
         /* 核心布局 */
         .split-container {
@@ -127,18 +120,14 @@
 </head>
 <body>
 
+    <!-- 🎯 修改后的扁平全铺式导航栏：所有分类一目了然 -->
     <nav>
         <a href="index.html" class="logo">SAM LIANG</a>
         <div class="nav-links">
-            <div class="dropdown">
-                <a href="index.html" style="font-weight: bold;">Portfolio</a>
-                <div class="dropdown-content">
-                    <a href="comics.html">Comics & Storyboards</a>
-                    <a href="film.html">Film Conceptart</a>
-                    <a href="personal.html">Personal Works</a>
-                </div>
-            </div>
-            <a href="about.html" class="about-link">About</a>
+            <a href="film.html" class="nav-item">Film Art</a>
+            <a href="comics.html" class="nav-item">Storyboards</a>
+            <a href="personal.html" class="nav-item">Personal</a>
+            <a href="about.html" class="nav-item">About</a>
         </div>
     </nav>
 
