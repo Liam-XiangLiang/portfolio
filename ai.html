@@ -77,13 +77,37 @@
         .app-tags { display: flex; gap: 10px; flex-wrap: wrap; }
         .app-tag { background: #2a2a2a; color: #ccc; font-size: 0.75rem; padding: 4px 10px; border-radius: 4px; letter-spacing: 1px; }
 
+        /* 焦点项目卡片：横跨整行，视频与文字左右分栏 */
+        .app-card-featured {
+            grid-column: 1 / -1;
+            background: #1a1a1a;
+            border: 1px solid var(--line-color);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            gap: 40px;
+            align-items: stretch;
+            transition: all 0.3s ease;
+        }
+        .app-card-featured:hover { border-color: var(--accent-color); }
+        .app-card-featured .app-video { flex: 1 1 50%; margin-bottom: 0; max-height: 400px; object-fit: cover; }
+        .app-card-featured .app-content { flex: 1 1 50%; display: flex; flex-direction: column; justify-content: center; }
+        .featured-badge {
+            display: inline-block; width: fit-content;
+            background: var(--accent-color); color: #0f0f0f;
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+            padding: 4px 10px; border-radius: 4px; margin-bottom: 15px;
+        }
+
         @media (max-width: 768px) {
             .app-grid { grid-template-columns: 1fr; }
+            .app-card-featured { flex-direction: column; }
+            .app-card-featured .app-video { max-height: none; }
             .project-header { flex-direction: column; align-items: flex-start; gap: 20px; }
             .project-meta { text-align: left; }
             nav { padding: 20px; }
             .nav-item { margin-left: 20px; font-size: 0.7rem; }
-            .hexagram-grid { 
+            .hexagram-grid {
         grid-template-columns: repeat(3, 1fr); /* 手机端每行 3 张，保证清晰度 */
     }
         }
@@ -124,6 +148,20 @@
             </div>
 
             <div class="app-grid">
+                <div class="app-card-featured">
+                    <video class="app-video" src="https://res.cloudinary.com/duzk5t3qp/video/upload/f_auto,q_auto/v1785240923/content_dmpn5i.mp4" autoplay loop muted playsinline></video>
+                    <div class="app-content">
+                        <span class="featured-badge">Featured</span>
+                        <h3 class="app-title">End-to-End AI Content Production Engine</h3>
+                        <p class="app-desc">A fully autonomous content pipeline that takes a topic from script to publish-ready video with zero manual editing. Voice is generated through the ElevenLabs API, and cover art, B-roll, and mood imagery through Flux (Black Forest Labs); everything is then assembled programmatically with Remotion, a React-based video rendering engine — no editing software involved. Every video moves through an 8-station production pipeline (assets, script, voiceover, video, cover, metadata, publish tracking) backed by a shared data layer that a command-line tool can also read and write, so the same pipeline runs by hand or in batch — enough to generate a full year's worth of content in a single pass. AI-written metadata and direct YouTube publishing are already built into the architecture as swappable layers on top of a zero-cost rule-based default, keeping token spend and production cost tightly optimized.</p>
+                        <div class="app-tags">
+                            <span class="app-tag">ElevenLabs + Flux API</span>
+                            <span class="app-tag">Remotion Video Pipeline</span>
+                            <span class="app-tag">CLI Batch Automation</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="app-card">
     <video class="app-video" src="https://res.cloudinary.com/duzk5t3qp/video/upload/f_auto,q_auto/v1782471695/tradingappsamliang_zkr0cb.mp4" autoplay loop muted playsinline></video>
     <h3 class="app-title">Systematic Trading & Behavioral Finance Terminal</h3>
